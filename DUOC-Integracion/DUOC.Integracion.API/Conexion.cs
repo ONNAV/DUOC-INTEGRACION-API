@@ -12,7 +12,7 @@ namespace DUOC.Integracion.API
 
         public static SqlCommand Conectar()
         {
-            conn = new SqlConnection("Data Source=.; Initial Catalog = CotizadorWeb; Integrated Security = true");
+            conn = new SqlConnection("Data Source=.; Initial Catalog = MasterBikes; Integrated Security = true");
             conn.Open();
             SqlCommand cmd = conn.CreateCommand();
             return cmd;
