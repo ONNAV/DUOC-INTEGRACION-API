@@ -1,0 +1,157 @@
+﻿
+@{
+    ViewBag.Title = "Cotizador";
+}
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<h2>Ingreso Arriendo</h2>
+<form method="post" id="frm-cotizacion">
+    <div class="form-group">
+        <label for="recipient-name" class="control-label">Proveedor</label>
+        <select class="form-control" name="TipoBici">
+            <option value="">Seleccione tipo de bicicleta</option>
+            <option value="1">Montaña</option>
+            <option value="2">Ruta</option>
+            <option value="3">Hibridas</option>
+            <option value="4">Urbanas</option>
+            <option value="5">Plegables</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="recipient-name" class="control-label">Fecha Inicio-Fin</label>
+        @Html.TextBox("fechaCalculo", DateTime.Now, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "text" })
+    </div>
+    <div class="form-group">
+        <input type="radio" name="mediopago" value="1">Débito<br>
+        <input type="radio" name="mediopago" value="2">Crédito<br>
+        <input type="radio" name="mediopago" value="3">Efectivo<br>
+        <input type="radio" name="mediopago" value="4">Tranferencia
+    </div>
+
+    <div class="box-footer">
+        <button type="submit" id="btnsubmit" class="btn btn-primary pull-right"> Guardar </button>
+    </div>
+</form>
+<div class="invoice" style="display:none">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="page-header">
+                <i class="fa fa-university"></i> Detalle Cotización
+            </h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 table-responsive">
+            <table class="table table-bordered cobcolpg" id="tblCotizacion">
+                <thead>
+                    <tr>
+                        <th>Proveedor</th>
+                        <th>Producto</th>
+                        <th>Valor $</th>
+                        <th>Fecha Cambio</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+    <br>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('input[name="fechaCalculo"]').daterangepicker();
+
+            var schema = "@this.Request.Url.Scheme";
+            var base_url = "@this.Request.Url.Authority";
+            var api = "http://localhost:49990/api";
+
+            $("#ProductoID").select2({
+                ajax: {
+                    url: schema + "://" + base_url + "/Cotizador/getProductos",
+                    dataType: 'json',
+                    delay: 0,
+                    cache: true,
+                    data: function (params) {
+                        return {
+                            q: params.term,
+                            page: params.page,
+                            prov: $("#ProveedorID").val()
+                        };
+                    },
+                    processResults: function (data, params) {
+                        return {
+                            results: data
+                        };
+                    },
+                    complete: function (d) {
+                        console.log(d);
+                    }
+                },
+                escapeMarkup: function (markup) {
+                    return markup;
+                }
+            });
+
+            $("#frm-cotizacion").submit(function (event) {
+                $.ajax({
+                        url: schema + "://" + base_url + "/SolicitudArriendo/generarCotizacion",
+                    //url: api +"/Arriendo/",
+                    type: "POST",
+                    data:  $(this).serialize(),
+                    dataType: 'JSON',
+                    beforeSend: function () {
+                        $('#btnsubmit').html('<i class="fa fa-circle-o-notch fa-spin fa-lg"></i> Cargando...');
+                        $('#btnsubmit').attr('disabled', true);
+                    },
+                    success: function (data) {
+                        $('#btnsubmit').html('<i class="fa fa-circle-o-notch fa-spin fa-lg"></i> Generar Cotización');
+                        $('#btnsubmit').attr('disabled', false);
+                        TBL(data.ID);
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log("ERROR:" + jqXHR.responseText);
+                    }
+                });
+                event.preventDefault();
+            });
+
+            function TBL(id) {
+                var data = $("#tblCotizacion").DataTable();
+                data.destroy();
+                $('#tblCotizacion').DataTable({
+                    "serverSide": true,
+                    "bRetrieve": true,
+                    "bLengthChange": true,
+                    "bFilter": false,
+                    "bSort": false,
+                    "bInfo": true,
+                    "bAutoWidth": true,
+                    "bPaginate": false,
+                    "createdRow": function (row, data, index) {
+                        $('td', row).eq(2).addClass('text-center');
+                        $('td', row).eq(3).addClass('text-center');
+                    },
+                    columns: [
+                    { data: "Proveedor" },
+                    { data: "Producto" },
+                    { data: "ValorPesos" },
+                    { data: "ValorCambio" }
+                    ],
+                    "ajax": {
+                        url: schema + "://" + base_url + "/Cotizador/generarCotizacionTBL/" + id,
+                        type: "post",
+                        dataType: "JSON"
+                    }
+                });
+            }
+        });
+    </script>
+}
+

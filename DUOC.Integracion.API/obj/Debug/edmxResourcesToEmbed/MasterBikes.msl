@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MasterBikesModelStoreContainer" CdmEntityContainer="MasterBikesEntities">
+    <EntitySetMapping Name="arriendo">
+      <EntityTypeMapping TypeName="MasterBikesModel.arriendo">
+        <MappingFragment StoreEntitySet="arriendo">
+          <ScalarProperty Name="crr_arriendo" ColumnName="crr_arriendo" />
+          <ScalarProperty Name="fec_arriendo" ColumnName="fec_arriendo" />
+          <ScalarProperty Name="fec_devolucion" ColumnName="fec_devolucion" />
+          <ScalarProperty Name="fec_devolucionefectiva" ColumnName="fec_devolucionefectiva" />
+          <ScalarProperty Name="estado_arriendo_cod_estado" ColumnName="estado_arriendo_cod_estado" />
+          <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+          <ScalarProperty Name="iva" ColumnName="iva" />
+          <ScalarProperty Name="cuotas" ColumnName="cuotas" />
+          <ScalarProperty Name="vuelto" ColumnName="vuelto" />
+          <ScalarProperty Name="medio_pago_cod_mediopago" ColumnName="medio_pago_cod_mediopago" />
+          <ScalarProperty Name="usuario_persona_rut" ColumnName="usuario_persona_rut" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bodega">
+      <EntityTypeMapping TypeName="MasterBikesModel.bodega">
+        <MappingFragment StoreEntitySet="bodega">
+          <ScalarProperty Name="cod_bodega" ColumnName="cod_bodega" />
+          <ScalarProperty Name="gls_bodega" ColumnName="gls_bodega" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cargo">
+      <EntityTypeMapping TypeName="MasterBikesModel.cargo">
+        <MappingFragment StoreEntitySet="cargo">
+          <ScalarProperty Name="cod_cargo" ColumnName="cod_cargo" />
+          <ScalarProperty Name="gls_cargo" ColumnName="gls_cargo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="detalle_arriendo">
+      <EntityTypeMapping TypeName="MasterBikesModel.detalle_arriendo">
+        <MappingFragment StoreEntitySet="detalle_arriendo">
+          <ScalarProperty Name="producto_cod_producto" ColumnName="producto_cod_producto" />
+          <ScalarProperty Name="arriendo_crr_arriendo" ColumnName="arriendo_crr_arriendo" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+          <ScalarProperty Name="iva" ColumnName="iva" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="descuento" ColumnName="descuento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="detalle_pedido">
+      <EntityTypeMapping TypeName="MasterBikesModel.detalle_pedido">
+        <MappingFragment StoreEntitySet="detalle_pedido">
+          <ScalarProperty Name="producto_cod_producto" ColumnName="producto_cod_producto" />
+          <ScalarProperty Name="pedido_crr_pedido" ColumnName="pedido_crr_pedido" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+          <ScalarProperty Name="iva" ColumnName="iva" />
+          <ScalarProperty Name="total" ColumnName="total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="detalle_ventaproducto">
+      <EntityTypeMapping TypeName="MasterBikesModel.detalle_ventaproducto">
+        <MappingFragment StoreEntitySet="detalle_ventaproducto">
+          <ScalarProperty Name="venta_crr_venta" ColumnName="venta_crr_venta" />
+          <ScalarProperty Name="producto_cod_producto" ColumnName="producto_cod_producto" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+          <ScalarProperty Name="iva" ColumnName="iva" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="descuento" ColumnName="descuento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="detalle_ventaservicio">
+      <EntityTypeMapping TypeName="MasterBikesModel.detalle_ventaservicio">
+        <MappingFragment StoreEntitySet="detalle_ventaservicio">
+          <ScalarProperty Name="ejecucion_servicio_crr_servicio" ColumnName="ejecucion_servicio_crr_servicio" />
+          <ScalarProperty Name="venta_crr_venta" ColumnName="venta_crr_venta" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+          <ScalarProperty Name="iva" ColumnName="iva" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="descuento" ColumnName="descuento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ejecucion_servicio">
+      <EntityTypeMapping TypeName="MasterBikesModel.ejecucion_servicio">
+        <MappingFragment StoreEntitySet="ejecucion_servicio">
+          <ScalarProperty Name="crr_servicio" ColumnName="crr_servicio" />
+          <ScalarProperty Name="fec_ejecucion" ColumnName="fec_ejecucion" />
+          <ScalarProperty Name="rut1" ColumnName="rut1" />
+          <ScalarProperty Name="rut2" ColumnName="rut2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="estado_arriendo">
+      <EntityTypeMapping TypeName="MasterBikesModel.estado_arriendo">
+        <MappingFragment StoreEntitySet="estado_arriendo">
+          <ScalarProperty Name="cod_estado" ColumnName="cod_estado" />
+          <ScalarProperty Name="gls_arriendo" ColumnName="gls_arriendo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="estado_servicio">
+      <EntityTypeMapping TypeName="MasterBikesModel.estado_servicio">
+        <MappingFragment StoreEntitySet="estado_servicio">
+          <ScalarProperty Name="cod_estadoservicio" ColumnName="cod_estadoservicio" />
+          <ScalarProperty Name="gls_estadoservicio" ColumnName="gls_estadoservicio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="marca">
+      <EntityTypeMapping TypeName="MasterBikesModel.marca">
+        <MappingFragment StoreEntitySet="marca">
+          <ScalarProperty Name="cod_marca" ColumnName="cod_marca" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="medio_pago">
+      <EntityTypeMapping TypeName="MasterBikesModel.medio_pago">
+        <MappingFragment StoreEntitySet="medio_pago">
+          <ScalarProperty Name="cod_mediopago" ColumnName="cod_mediopago" />
+          <ScalarProperty Name="gls_mediopago" ColumnName="gls_mediopago" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="operador">
+      <EntityTypeMapping TypeName="MasterBikesModel.operador">
+        <MappingFragment StoreEntitySet="operador">
+          <ScalarProperty Name="fec_ingreso" ColumnName="fec_ingreso" />
+          <ScalarProperty Name="persona_rut" ColumnName="persona_rut" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pedido">
+      <EntityTypeMapping TypeName="MasterBikesModel.pedido">
+        <MappingFragment StoreEntitySet="pedido">
+          <ScalarProperty Name="crr_pedido" ColumnName="crr_pedido" />
+          <ScalarProperty Name="fec_pedido" ColumnName="fec_pedido" />
+          <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+          <ScalarProperty Name="iva" ColumnName="iva" />
+          <ScalarProperty Name="total" ColumnName="total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="persona">
+      <EntityTypeMapping TypeName="MasterBikesModel.persona">
+        <MappingFragment StoreEntitySet="persona">
+          <ScalarProperty Name="rut" ColumnName="rut" />
+          <ScalarProperty Name="dv" ColumnName="dv" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="paterno" ColumnName="paterno" />
+          <ScalarProperty Name="materno" ColumnName="materno" />
+          <ScalarProperty Name="nacimiento" ColumnName="nacimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="producto">
+      <EntityTypeMapping TypeName="MasterBikesModel.producto">
+        <MappingFragment StoreEntitySet="producto">
+          <ScalarProperty Name="cod_producto" ColumnName="cod_producto" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="stock" ColumnName="stock" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="producto_proveedor">
+      <EntityTypeMapping TypeName="MasterBikesModel.producto_proveedor">
+        <MappingFragment StoreEntitySet="producto_proveedor">
+          <ScalarProperty Name="producto_cod_producto" ColumnName="producto_cod_producto" />
+          <ScalarProperty Name="proveedor_id_proveedor" ColumnName="proveedor_id_proveedor" />
+          <ScalarProperty Name="fec_iniciocontrato" ColumnName="fec_iniciocontrato" />
+          <ScalarProperty Name="fec_fin" ColumnName="fec_fin" />
+          <ScalarProperty Name="flg_activo" ColumnName="flg_activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="proveedor">
+      <EntityTypeMapping TypeName="MasterBikesModel.proveedor">
+        <MappingFragment StoreEntitySet="proveedor">
+          <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="servicio">
+      <EntityTypeMapping TypeName="MasterBikesModel.servicio">
+        <MappingFragment StoreEntitySet="servicio">
+          <ScalarProperty Name="cod_servicio" ColumnName="cod_servicio" />
+          <ScalarProperty Name="gls_servicio" ColumnName="gls_servicio" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_producto">
+      <EntityTypeMapping TypeName="MasterBikesModel.tipo_producto">
+        <MappingFragment StoreEntitySet="tipo_producto">
+          <ScalarProperty Name="cod_tipoproducto" ColumnName="cod_tipoproducto" />
+          <ScalarProperty Name="gls_tipo" ColumnName="gls_tipo" />
+          <ScalarProperty Name="flg_venta" ColumnName="flg_venta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_usuario">
+      <EntityTypeMapping TypeName="MasterBikesModel.tipo_usuario">
+        <MappingFragment StoreEntitySet="tipo_usuario">
+          <ScalarProperty Name="cod_tipousuario" ColumnName="cod_tipousuario" />
+          <ScalarProperty Name="gls_tipo" ColumnName="gls_tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuario">
+      <EntityTypeMapping TypeName="MasterBikesModel.usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="persona_rut" ColumnName="persona_rut" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArriendoBicicleta">
+      <EntityTypeMapping TypeName="MasterBikesModel.ArriendoBicicleta">
+        <MappingFragment StoreEntitySet="ArriendoBicicleta">
+          <ScalarProperty Name="crr_arriendo" ColumnName="crr_arriendo" />
+          <ScalarProperty Name="tipo_bicicleta" ColumnName="tipo_bicicleta" />
+          <ScalarProperty Name="fec_arriendo" ColumnName="fec_arriendo" />
+          <ScalarProperty Name="fec_devolucion" ColumnName="fec_devolucion" />
+          <ScalarProperty Name="fec_devolucionefectiva" ColumnName="fec_devolucionefectiva" />
+          <ScalarProperty Name="estado_arriendo_cod_estado" ColumnName="estado_arriendo_cod_estado" />
+          <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+          <ScalarProperty Name="iva" ColumnName="iva" />
+          <ScalarProperty Name="cuotas" ColumnName="cuotas" />
+          <ScalarProperty Name="vuelto" ColumnName="vuelto" />
+          <ScalarProperty Name="medio_pago_cod_mediopago" ColumnName="medio_pago_cod_mediopago" />
+          <ScalarProperty Name="usuario_persona_rut" ColumnName="usuario_persona_rut" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="operador_cargo_FK" TypeName="MasterBikesModel.operador_cargo_FK" StoreEntitySet="operador">
+      <EndProperty Name="cargo">
+        <ScalarProperty Name="cod_cargo" ColumnName="cargo_cod_cargo" />
+      </EndProperty>
+      <EndProperty Name="operador">
+        <ScalarProperty Name="persona_rut" ColumnName="persona_rut" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ejecucion_servicio_estado_servicio_FK" TypeName="MasterBikesModel.ejecucion_servicio_estado_servicio_FK" StoreEntitySet="ejecucion_servicio">
+      <EndProperty Name="estado_servicio">
+        <ScalarProperty Name="cod_estadoservicio" ColumnName="estado_servicio_cod_estadoservicio" />
+      </EndProperty>
+      <EndProperty Name="ejecucion_servicio">
+        <ScalarProperty Name="crr_servicio" ColumnName="crr_servicio" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ejecucion_servicio_operador_FK" TypeName="MasterBikesModel.ejecucion_servicio_operador_FK" StoreEntitySet="ejecucion_servicio">
+      <EndProperty Name="operador">
+        <ScalarProperty Name="persona_rut" ColumnName="operador_persona_rut" />
+      </EndProperty>
+      <EndProperty Name="ejecucion_servicio">
+        <ScalarProperty Name="crr_servicio" ColumnName="crr_servicio" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ejecucion_servicio_servicio_FK" TypeName="MasterBikesModel.ejecucion_servicio_servicio_FK" StoreEntitySet="ejecucion_servicio">
+      <EndProperty Name="servicio">
+        <ScalarProperty Name="cod_servicio" ColumnName="servicio_cod_servicio" />
+      </EndProperty>
+      <EndProperty Name="ejecucion_servicio">
+        <ScalarProperty Name="crr_servicio" ColumnName="crr_servicio" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="producto_marca_FK" TypeName="MasterBikesModel.producto_marca_FK" StoreEntitySet="producto">
+      <EndProperty Name="marca">
+        <ScalarProperty Name="cod_marca" ColumnName="marca_cod_marca" />
+      </EndProperty>
+      <EndProperty Name="producto">
+        <ScalarProperty Name="cod_producto" ColumnName="cod_producto" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="pedido_proveedor_FK" TypeName="MasterBikesModel.pedido_proveedor_FK" StoreEntitySet="pedido">
+      <EndProperty Name="proveedor">
+        <ScalarProperty Name="id_proveedor" ColumnName="proveedor_id_proveedor" />
+      </EndProperty>
+      <EndProperty Name="pedido">
+        <ScalarProperty Name="crr_pedido" ColumnName="crr_pedido" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="producto_tipo_producto_FK" TypeName="MasterBikesModel.producto_tipo_producto_FK" StoreEntitySet="producto">
+      <EndProperty Name="tipo_producto">
+        <ScalarProperty Name="cod_tipoproducto" ColumnName="tipo_producto_cod_tipoproducto" />
+      </EndProperty>
+      <EndProperty Name="producto">
+        <ScalarProperty Name="cod_producto" ColumnName="cod_producto" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="usuario_tipo_usuario_FK" TypeName="MasterBikesModel.usuario_tipo_usuario_FK" StoreEntitySet="usuario">
+      <EndProperty Name="tipo_usuario">
+        <ScalarProperty Name="cod_tipousuario" ColumnName="tipo_usuario_cod_tipousuario" />
+      </EndProperty>
+      <EndProperty Name="usuario">
+        <ScalarProperty Name="persona_rut" ColumnName="persona_rut" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="venta">
+      <EntityTypeMapping TypeName="MasterBikesModel.venta">
+        <MappingFragment StoreEntitySet="venta">
+          <ScalarProperty Name="usuario_persona_rut" ColumnName="usuario_persona_rut" />
+          <ScalarProperty Name="vuelto" ColumnName="vuelto" />
+          <ScalarProperty Name="cuotas" ColumnName="cuotas" />
+          <ScalarProperty Name="medio_pago_cod_mediopago" ColumnName="medio_pago_cod_mediopago" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="iva" ColumnName="iva" />
+          <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+          <ScalarProperty Name="fec_venta" ColumnName="fec_venta" />
+          <ScalarProperty Name="crr_venta" ColumnName="crr_venta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pedido_Bicicleta">
+      <EntityTypeMapping TypeName="MasterBikesModel.Pedido_Bicicleta">
+        <MappingFragment StoreEntitySet="Pedido_Bicicleta">
+          <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="iva" ColumnName="iva" />
+          <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+          <ScalarProperty Name="fec_pedido" ColumnName="fec_pedido" />
+          <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ventas">
+      <EntityTypeMapping TypeName="MasterBikesModel.Ventas">
+        <MappingFragment StoreEntitySet="Ventas">
+          <ScalarProperty Name="usuario_persona_rut" ColumnName="usuario_persona_rut" />
+          <ScalarProperty Name="vuelto" ColumnName="vuelto" />
+          <ScalarProperty Name="cuotas" ColumnName="cuotas" />
+          <ScalarProperty Name="medio_pago_cod_mediopago" ColumnName="medio_pago_cod_mediopago" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="iva" ColumnName="iva" />
+          <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+          <ScalarProperty Name="fecha_venta" ColumnName="fecha_venta" />
+          <ScalarProperty Name="crr_venta" ColumnName="crr_venta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stock">
+      <EntityTypeMapping TypeName="MasterBikesModel.stock">
+        <MappingFragment StoreEntitySet="stock">
+          <ScalarProperty Name="minimo" ColumnName="minimo" />
+          <ScalarProperty Name="actual" ColumnName="actual" />
+          <ScalarProperty Name="producto_cod_producto" ColumnName="producto_cod_producto" />
+          <ScalarProperty Name="bodega_cod_bodega" ColumnName="bodega_cod_bodega" />
+          <ScalarProperty Name="id_stock" ColumnName="id_stock" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServicioBicicleta">
+      <EntityTypeMapping TypeName="MasterBikesModel.ServicioBicicleta">
+        <MappingFragment StoreEntitySet="ServicioBicicleta">
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="DescripcionServicio" ColumnName="DescripcionServicio" />
+          <ScalarProperty Name="IDServicio" ColumnName="IDServicio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

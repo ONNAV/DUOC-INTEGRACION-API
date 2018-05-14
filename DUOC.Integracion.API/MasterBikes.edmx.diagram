@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3b77dcb030134c3ea21b0bc0be84fdcb" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="MasterBikesModel.arriendo" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterBikesModel.bodega" Width="1.5" PointX="6" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterBikesModel.cargo" Width="1.5" PointX="10.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterBikesModel.detalle_arriendo" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterBikesModel.detalle_pedido" Width="1.5" PointX="8.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterBikesModel.detalle_ventaproducto" Width="1.5" PointX="5.25" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterBikesModel.detalle_ventaservicio" Width="1.5" PointX="17.5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterBikesModel.ejecucion_servicio" Width="1.5" PointX="15.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterBikesModel.estado_arriendo" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterBikesModel.estado_servicio" Width="1.5" PointX="13" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterBikesModel.marca" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterBikesModel.medio_pago" Width="1.5" PointX="2.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterBikesModel.operador" Width="1.5" PointX="13" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterBikesModel.pedido" Width="1.5" PointX="6" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterBikesModel.persona" Width="1.5" PointX="10.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterBikesModel.producto" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterBikesModel.producto_proveedor" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterBikesModel.proveedor" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterBikesModel.servicio" Width="1.5" PointX="13" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterBikesModel.tipo_producto" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterBikesModel.tipo_usuario" Width="1.5" PointX="10.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterBikesModel.usuario" Width="1.5" PointX="13" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterBikesModel.ArriendoBicicleta" Width="1.5" PointX="10.75" PointY="11.75" IsExpanded="true" />
+        <AssociationConnector Association="MasterBikesModel.detalle_arriendo_arriendo_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterBikesModel.operador_cargo_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterBikesModel.detalle_arriendo_producto_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterBikesModel.detalle_pedido_pedido_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterBikesModel.detalle_pedido_producto_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterBikesModel.detalle_ventaproducto_producto_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterBikesModel.detalle_ventaservicio_ejecucion_servicio_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterBikesModel.ejecucion_servicio_estado_servicio_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterBikesModel.ejecucion_servicio_operador_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterBikesModel.ejecucion_servicio_servicio_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterBikesModel.producto_marca_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterBikesModel.operador_persona_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterBikesModel.pedido_proveedor_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterBikesModel.usuario_persona_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterBikesModel.producto_proveedor_producto_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterBikesModel.producto_tipo_producto_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterBikesModel.producto_proveedor_proveedor_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterBikesModel.usuario_tipo_usuario_FK" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MasterBikesModel.venta" Width="1.5" PointX="7.375" PointY="12.75" />
+        <EntityTypeShape EntityType="MasterBikesModel.Pedido_Bicicleta" Width="1.5" PointX="13.375" PointY="11.75" />
+        <EntityTypeShape EntityType="MasterBikesModel.Ventas" Width="1.5" PointX="13.375" PointY="14.75" />
+        <EntityTypeShape EntityType="MasterBikesModel.stock" Width="1.5" PointX="7.375" PointY="4.75" />
+        <EntityTypeShape EntityType="MasterBikesModel.ServicioBicicleta" Width="1.5" PointX="15.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

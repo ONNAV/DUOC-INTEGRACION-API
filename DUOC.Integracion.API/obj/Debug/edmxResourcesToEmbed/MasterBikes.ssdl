@@ -1,0 +1,640 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MasterBikesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="arriendo">
+    <Key>
+      <PropertyRef Name="crr_arriendo" />
+    </Key>
+    <Property Name="crr_arriendo" Type="int" Nullable="false" />
+    <Property Name="fec_arriendo" Type="date" Nullable="false" />
+    <Property Name="fec_devolucion" Type="date" Nullable="false" />
+    <Property Name="fec_devolucionefectiva" Type="date" Nullable="false" />
+    <Property Name="estado_arriendo_cod_estado" Type="smallint" Nullable="false" />
+    <Property Name="subtotal" Type="int" Nullable="false" />
+    <Property Name="iva" Type="int" Nullable="false" />
+    <Property Name="cuotas" Type="smallint" Nullable="false" />
+    <Property Name="vuelto" Type="int" Nullable="false" />
+    <Property Name="medio_pago_cod_mediopago" Type="int" Nullable="false" />
+    <Property Name="usuario_persona_rut" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MasterBikes_DUOC.dbo.ArriendoBicicleta' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ArriendoBicicleta">
+    <Key>
+      <PropertyRef Name="crr_arriendo" />
+    </Key>
+    <Property Name="crr_arriendo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tipo_bicicleta" Type="varchar" MaxLength="10" />
+    <Property Name="fec_arriendo" Type="date" />
+    <Property Name="fec_devolucion" Type="date" />
+    <Property Name="fec_devolucionefectiva" Type="date" />
+    <Property Name="estado_arriendo_cod_estado" Type="int" />
+    <Property Name="subtotal" Type="int" />
+    <Property Name="iva" Type="int" />
+    <Property Name="cuotas" Type="int" />
+    <Property Name="vuelto" Type="int" />
+    <Property Name="medio_pago_cod_mediopago" Type="int" />
+    <Property Name="usuario_persona_rut" Type="int" />
+  </EntityType>
+  <EntityType Name="bodega">
+    <Key>
+      <PropertyRef Name="cod_bodega" />
+    </Key>
+    <Property Name="cod_bodega" Type="int" Nullable="false" />
+    <Property Name="gls_bodega" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cargo">
+    <Key>
+      <PropertyRef Name="cod_cargo" />
+    </Key>
+    <Property Name="cod_cargo" Type="int" Nullable="false" />
+    <Property Name="gls_cargo" Type="varchar" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="detalle_arriendo">
+    <Key>
+      <PropertyRef Name="producto_cod_producto" />
+      <PropertyRef Name="arriendo_crr_arriendo" />
+    </Key>
+    <Property Name="producto_cod_producto" Type="int" Nullable="false" />
+    <Property Name="arriendo_crr_arriendo" Type="int" Nullable="false" />
+    <Property Name="cantidad" Type="int" Nullable="false" />
+    <Property Name="subtotal" Type="int" Nullable="false" />
+    <Property Name="iva" Type="int" Nullable="false" />
+    <Property Name="total" Type="int" Nullable="false" />
+    <Property Name="descuento" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="detalle_pedido">
+    <Key>
+      <PropertyRef Name="producto_cod_producto" />
+      <PropertyRef Name="pedido_crr_pedido" />
+    </Key>
+    <Property Name="producto_cod_producto" Type="int" Nullable="false" />
+    <Property Name="pedido_crr_pedido" Type="int" Nullable="false" />
+    <Property Name="cantidad" Type="int" Nullable="false" />
+    <Property Name="subtotal" Type="int" Nullable="false" />
+    <Property Name="iva" Type="int" Nullable="false" />
+    <Property Name="total" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="detalle_ventaproducto">
+    <Key>
+      <PropertyRef Name="venta_crr_venta" />
+      <PropertyRef Name="producto_cod_producto" />
+    </Key>
+    <Property Name="venta_crr_venta" Type="int" Nullable="false" />
+    <Property Name="producto_cod_producto" Type="int" Nullable="false" />
+    <Property Name="cantidad" Type="int" Nullable="false" />
+    <Property Name="subtotal" Type="int" Nullable="false" />
+    <Property Name="iva" Type="int" Nullable="false" />
+    <Property Name="total" Type="int" Nullable="false" />
+    <Property Name="descuento" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="detalle_ventaservicio">
+    <Key>
+      <PropertyRef Name="ejecucion_servicio_crr_servicio" />
+      <PropertyRef Name="venta_crr_venta" />
+    </Key>
+    <Property Name="ejecucion_servicio_crr_servicio" Type="int" Nullable="false" />
+    <Property Name="venta_crr_venta" Type="int" Nullable="false" />
+    <Property Name="cantidad" Type="int" Nullable="false" />
+    <Property Name="subtotal" Type="int" Nullable="false" />
+    <Property Name="iva" Type="int" Nullable="false" />
+    <Property Name="total" Type="int" />
+    <Property Name="descuento" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ejecucion_servicio">
+    <Key>
+      <PropertyRef Name="crr_servicio" />
+    </Key>
+    <Property Name="crr_servicio" Type="int" Nullable="false" />
+    <Property Name="fec_ejecucion" Type="date" Nullable="false" />
+    <Property Name="servicio_cod_servicio" Type="int" Nullable="false" />
+    <Property Name="rut1" Type="int" Nullable="false" />
+    <Property Name="operador_persona_rut" Type="int" Nullable="false" />
+    <Property Name="rut2" Type="int" Nullable="false" />
+    <Property Name="estado_servicio_cod_estadoservicio" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="estado_arriendo">
+    <Key>
+      <PropertyRef Name="cod_estado" />
+    </Key>
+    <Property Name="cod_estado" Type="smallint" Nullable="false" />
+    <Property Name="gls_arriendo" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="estado_servicio">
+    <Key>
+      <PropertyRef Name="cod_estadoservicio" />
+    </Key>
+    <Property Name="cod_estadoservicio" Type="int" Nullable="false" />
+    <Property Name="gls_estadoservicio" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="marca">
+    <Key>
+      <PropertyRef Name="cod_marca" />
+    </Key>
+    <Property Name="cod_marca" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="medio_pago">
+    <Key>
+      <PropertyRef Name="cod_mediopago" />
+    </Key>
+    <Property Name="cod_mediopago" Type="int" Nullable="false" />
+    <Property Name="gls_mediopago" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="operador">
+    <Key>
+      <PropertyRef Name="persona_rut" />
+    </Key>
+    <Property Name="fec_ingreso" Type="date" Nullable="false" />
+    <Property Name="persona_rut" Type="int" Nullable="false" />
+    <Property Name="cargo_cod_cargo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pedido">
+    <Key>
+      <PropertyRef Name="crr_pedido" />
+    </Key>
+    <Property Name="crr_pedido" Type="int" Nullable="false" />
+    <Property Name="fec_pedido" Type="date" Nullable="false" />
+    <Property Name="subtotal" Type="int" />
+    <Property Name="iva" Type="int" />
+    <Property Name="total" Type="int" Nullable="false" />
+    <Property Name="proveedor_id_proveedor" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pedido_Bicicleta">
+    <Key>
+      <PropertyRef Name="id_pedido" />
+    </Key>
+    <Property Name="id_pedido" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fec_pedido" Type="datetime" />
+    <Property Name="subtotal" Type="int" />
+    <Property Name="iva" Type="int" />
+    <Property Name="total" Type="int" Nullable="false" />
+    <Property Name="id_proveedor" Type="int" />
+  </EntityType>
+  <EntityType Name="persona">
+    <Key>
+      <PropertyRef Name="rut" />
+    </Key>
+    <Property Name="rut" Type="int" Nullable="false" />
+    <Property Name="dv" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="paterno" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="materno" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="nacimiento" Type="date" />
+  </EntityType>
+  <EntityType Name="producto">
+    <Key>
+      <PropertyRef Name="cod_producto" />
+    </Key>
+    <Property Name="cod_producto" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="precio" Type="int" Nullable="false" />
+    <Property Name="stock" Type="int" Nullable="false" />
+    <Property Name="marca_cod_marca" Type="int" Nullable="false" />
+    <Property Name="tipo_producto_cod_tipoproducto" Type="int" Nullable="false" />
+    <Property Name="descripcion" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="producto_proveedor">
+    <Key>
+      <PropertyRef Name="producto_cod_producto" />
+      <PropertyRef Name="proveedor_id_proveedor" />
+    </Key>
+    <Property Name="producto_cod_producto" Type="int" Nullable="false" />
+    <Property Name="proveedor_id_proveedor" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="fec_iniciocontrato" Type="date" Nullable="false" />
+    <Property Name="fec_fin" Type="date" />
+    <Property Name="flg_activo" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="proveedor">
+    <Key>
+      <PropertyRef Name="id_proveedor" />
+    </Key>
+    <Property Name="id_proveedor" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="direccion" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="mail" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="servicio">
+    <Key>
+      <PropertyRef Name="cod_servicio" />
+    </Key>
+    <Property Name="cod_servicio" Type="int" Nullable="false" />
+    <Property Name="gls_servicio" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="precio" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ServicioBicicleta">
+    <Key>
+      <PropertyRef Name="IDServicio" />
+    </Key>
+    <Property Name="IDServicio" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DescripcionServicio" Type="varchar(max)" />
+    <Property Name="Total" Type="bigint" />
+  </EntityType>
+  <EntityType Name="stock">
+    <Key>
+      <PropertyRef Name="id_stock" />
+    </Key>
+    <Property Name="id_stock" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="bodega_cod_bodega" Type="int" />
+    <Property Name="producto_cod_producto" Type="int" />
+    <Property Name="actual" Type="int" />
+    <Property Name="minimo" Type="int" />
+  </EntityType>
+  <EntityType Name="tipo_producto">
+    <Key>
+      <PropertyRef Name="cod_tipoproducto" />
+    </Key>
+    <Property Name="cod_tipoproducto" Type="int" Nullable="false" />
+    <Property Name="gls_tipo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="flg_venta" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tipo_usuario">
+    <Key>
+      <PropertyRef Name="cod_tipousuario" />
+    </Key>
+    <Property Name="cod_tipousuario" Type="int" Nullable="false" />
+    <Property Name="gls_tipo" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="persona_rut" />
+    </Key>
+    <Property Name="tipo_usuario_cod_tipousuario" Type="int" Nullable="false" />
+    <Property Name="persona_rut" Type="int" Nullable="false" />
+    <Property Name="pass" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MasterBikes_DUOC.dbo.venta' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="venta">
+    <Key>
+      <PropertyRef Name="crr_venta" />
+    </Key>
+    <Property Name="crr_venta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fec_venta" Type="date" />
+    <Property Name="subtotal" Type="int" />
+    <Property Name="iva" Type="int" />
+    <Property Name="total" Type="int" />
+    <Property Name="medio_pago_cod_mediopago" Type="int" />
+    <Property Name="cuotas" Type="smallint" />
+    <Property Name="vuelto" Type="int" />
+    <Property Name="usuario_persona_rut" Type="int" />
+  </EntityType>
+  <EntityType Name="Ventas">
+    <Key>
+      <PropertyRef Name="crr_venta" />
+    </Key>
+    <Property Name="crr_venta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha_venta" Type="datetime" />
+    <Property Name="subtotal" Type="int" />
+    <Property Name="iva" Type="int" />
+    <Property Name="total" Type="int" />
+    <Property Name="medio_pago_cod_mediopago" Type="int" />
+    <Property Name="cuotas" Type="int" />
+    <Property Name="vuelto" Type="int" />
+    <Property Name="usuario_persona_rut" Type="int" />
+  </EntityType>
+  <Association Name="detalle_arriendo_arriendo_FK">
+    <End Role="arriendo" Type="Self.arriendo" Multiplicity="1" />
+    <End Role="detalle_arriendo" Type="Self.detalle_arriendo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="arriendo">
+        <PropertyRef Name="crr_arriendo" />
+      </Principal>
+      <Dependent Role="detalle_arriendo">
+        <PropertyRef Name="arriendo_crr_arriendo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="detalle_arriendo_producto_FK">
+    <End Role="producto" Type="Self.producto" Multiplicity="1" />
+    <End Role="detalle_arriendo" Type="Self.detalle_arriendo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="producto">
+        <PropertyRef Name="cod_producto" />
+      </Principal>
+      <Dependent Role="detalle_arriendo">
+        <PropertyRef Name="producto_cod_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="detalle_pedido_pedido_FK">
+    <End Role="pedido" Type="Self.pedido" Multiplicity="1" />
+    <End Role="detalle_pedido" Type="Self.detalle_pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pedido">
+        <PropertyRef Name="crr_pedido" />
+      </Principal>
+      <Dependent Role="detalle_pedido">
+        <PropertyRef Name="pedido_crr_pedido" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="detalle_pedido_producto_FK">
+    <End Role="producto" Type="Self.producto" Multiplicity="1" />
+    <End Role="detalle_pedido" Type="Self.detalle_pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="producto">
+        <PropertyRef Name="cod_producto" />
+      </Principal>
+      <Dependent Role="detalle_pedido">
+        <PropertyRef Name="producto_cod_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="detalle_ventaproducto_producto_FK">
+    <End Role="producto" Type="Self.producto" Multiplicity="1" />
+    <End Role="detalle_ventaproducto" Type="Self.detalle_ventaproducto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="producto">
+        <PropertyRef Name="cod_producto" />
+      </Principal>
+      <Dependent Role="detalle_ventaproducto">
+        <PropertyRef Name="producto_cod_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="detalle_ventaservicio_ejecucion_servicio_FK">
+    <End Role="ejecucion_servicio" Type="Self.ejecucion_servicio" Multiplicity="1" />
+    <End Role="detalle_ventaservicio" Type="Self.detalle_ventaservicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ejecucion_servicio">
+        <PropertyRef Name="crr_servicio" />
+      </Principal>
+      <Dependent Role="detalle_ventaservicio">
+        <PropertyRef Name="ejecucion_servicio_crr_servicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ejecucion_servicio_estado_servicio_FK">
+    <End Role="estado_servicio" Type="Self.estado_servicio" Multiplicity="1" />
+    <End Role="ejecucion_servicio" Type="Self.ejecucion_servicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="estado_servicio">
+        <PropertyRef Name="cod_estadoservicio" />
+      </Principal>
+      <Dependent Role="ejecucion_servicio">
+        <PropertyRef Name="estado_servicio_cod_estadoservicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ejecucion_servicio_operador_FK">
+    <End Role="operador" Type="Self.operador" Multiplicity="1" />
+    <End Role="ejecucion_servicio" Type="Self.ejecucion_servicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="operador">
+        <PropertyRef Name="persona_rut" />
+      </Principal>
+      <Dependent Role="ejecucion_servicio">
+        <PropertyRef Name="operador_persona_rut" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ejecucion_servicio_servicio_FK">
+    <End Role="servicio" Type="Self.servicio" Multiplicity="1" />
+    <End Role="ejecucion_servicio" Type="Self.ejecucion_servicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="servicio">
+        <PropertyRef Name="cod_servicio" />
+      </Principal>
+      <Dependent Role="ejecucion_servicio">
+        <PropertyRef Name="servicio_cod_servicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="operador_cargo_FK">
+    <End Role="cargo" Type="Self.cargo" Multiplicity="1" />
+    <End Role="operador" Type="Self.operador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cargo">
+        <PropertyRef Name="cod_cargo" />
+      </Principal>
+      <Dependent Role="operador">
+        <PropertyRef Name="cargo_cod_cargo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="operador_persona_FK">
+    <End Role="persona" Type="Self.persona" Multiplicity="1" />
+    <End Role="operador" Type="Self.operador" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="rut" />
+      </Principal>
+      <Dependent Role="operador">
+        <PropertyRef Name="persona_rut" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pedido_proveedor_FK">
+    <End Role="proveedor" Type="Self.proveedor" Multiplicity="1" />
+    <End Role="pedido" Type="Self.pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedor">
+        <PropertyRef Name="id_proveedor" />
+      </Principal>
+      <Dependent Role="pedido">
+        <PropertyRef Name="proveedor_id_proveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="producto_marca_FK">
+    <End Role="marca" Type="Self.marca" Multiplicity="1" />
+    <End Role="producto" Type="Self.producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="marca">
+        <PropertyRef Name="cod_marca" />
+      </Principal>
+      <Dependent Role="producto">
+        <PropertyRef Name="marca_cod_marca" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="producto_proveedor_producto_FK">
+    <End Role="producto" Type="Self.producto" Multiplicity="1" />
+    <End Role="producto_proveedor" Type="Self.producto_proveedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="producto">
+        <PropertyRef Name="cod_producto" />
+      </Principal>
+      <Dependent Role="producto_proveedor">
+        <PropertyRef Name="producto_cod_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="producto_proveedor_proveedor_FK">
+    <End Role="proveedor" Type="Self.proveedor" Multiplicity="1" />
+    <End Role="producto_proveedor" Type="Self.producto_proveedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedor">
+        <PropertyRef Name="id_proveedor" />
+      </Principal>
+      <Dependent Role="producto_proveedor">
+        <PropertyRef Name="proveedor_id_proveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="producto_tipo_producto_FK">
+    <End Role="tipo_producto" Type="Self.tipo_producto" Multiplicity="1" />
+    <End Role="producto" Type="Self.producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_producto">
+        <PropertyRef Name="cod_tipoproducto" />
+      </Principal>
+      <Dependent Role="producto">
+        <PropertyRef Name="tipo_producto_cod_tipoproducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuario_persona_FK">
+    <End Role="persona" Type="Self.persona" Multiplicity="1" />
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="rut" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="persona_rut" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuario_tipo_usuario_FK">
+    <End Role="tipo_usuario" Type="Self.tipo_usuario" Multiplicity="1" />
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_usuario">
+        <PropertyRef Name="cod_tipousuario" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="tipo_usuario_cod_tipousuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MasterBikesModelStoreContainer">
+    <EntitySet Name="arriendo" EntityType="Self.arriendo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="bodega" EntityType="Self.bodega" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cargo" EntityType="Self.cargo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="detalle_arriendo" EntityType="Self.detalle_arriendo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="detalle_pedido" EntityType="Self.detalle_pedido" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="detalle_ventaproducto" EntityType="Self.detalle_ventaproducto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="detalle_ventaservicio" EntityType="Self.detalle_ventaservicio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ejecucion_servicio" EntityType="Self.ejecucion_servicio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="estado_arriendo" EntityType="Self.estado_arriendo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="estado_servicio" EntityType="Self.estado_servicio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="marca" EntityType="Self.marca" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="medio_pago" EntityType="Self.medio_pago" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="operador" EntityType="Self.operador" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="pedido" EntityType="Self.pedido" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pedido_Bicicleta" EntityType="Self.Pedido_Bicicleta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="persona" EntityType="Self.persona" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="producto" EntityType="Self.producto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="producto_proveedor" EntityType="Self.producto_proveedor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="proveedor" EntityType="Self.proveedor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="servicio" EntityType="Self.servicio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServicioBicicleta" EntityType="Self.ServicioBicicleta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="stock" EntityType="Self.stock" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tipo_producto" EntityType="Self.tipo_producto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tipo_usuario" EntityType="Self.tipo_usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ventas" EntityType="Self.Ventas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ArriendoBicicleta" EntityType="Self.ArriendoBicicleta" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ArriendoBicicleta].[crr_arriendo] AS [crr_arriendo], 
+    [ArriendoBicicleta].[tipo_bicicleta] AS [tipo_bicicleta], 
+    [ArriendoBicicleta].[fec_arriendo] AS [fec_arriendo], 
+    [ArriendoBicicleta].[fec_devolucion] AS [fec_devolucion], 
+    [ArriendoBicicleta].[fec_devolucionefectiva] AS [fec_devolucionefectiva], 
+    [ArriendoBicicleta].[estado_arriendo_cod_estado] AS [estado_arriendo_cod_estado], 
+    [ArriendoBicicleta].[subtotal] AS [subtotal], 
+    [ArriendoBicicleta].[iva] AS [iva], 
+    [ArriendoBicicleta].[cuotas] AS [cuotas], 
+    [ArriendoBicicleta].[vuelto] AS [vuelto], 
+    [ArriendoBicicleta].[medio_pago_cod_mediopago] AS [medio_pago_cod_mediopago], 
+    [ArriendoBicicleta].[usuario_persona_rut] AS [usuario_persona_rut]
+    FROM [dbo].[ArriendoBicicleta] AS [ArriendoBicicleta]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="venta" EntityType="Self.venta" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [venta].[crr_venta] AS [crr_venta], 
+    [venta].[fec_venta] AS [fec_venta], 
+    [venta].[subtotal] AS [subtotal], 
+    [venta].[iva] AS [iva], 
+    [venta].[total] AS [total], 
+    [venta].[medio_pago_cod_mediopago] AS [medio_pago_cod_mediopago], 
+    [venta].[cuotas] AS [cuotas], 
+    [venta].[vuelto] AS [vuelto], 
+    [venta].[usuario_persona_rut] AS [usuario_persona_rut]
+    FROM [dbo].[venta] AS [venta]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="detalle_arriendo_arriendo_FK" Association="Self.detalle_arriendo_arriendo_FK">
+      <End Role="arriendo" EntitySet="arriendo" />
+      <End Role="detalle_arriendo" EntitySet="detalle_arriendo" />
+    </AssociationSet>
+    <AssociationSet Name="detalle_arriendo_producto_FK" Association="Self.detalle_arriendo_producto_FK">
+      <End Role="producto" EntitySet="producto" />
+      <End Role="detalle_arriendo" EntitySet="detalle_arriendo" />
+    </AssociationSet>
+    <AssociationSet Name="detalle_pedido_pedido_FK" Association="Self.detalle_pedido_pedido_FK">
+      <End Role="pedido" EntitySet="pedido" />
+      <End Role="detalle_pedido" EntitySet="detalle_pedido" />
+    </AssociationSet>
+    <AssociationSet Name="detalle_pedido_producto_FK" Association="Self.detalle_pedido_producto_FK">
+      <End Role="producto" EntitySet="producto" />
+      <End Role="detalle_pedido" EntitySet="detalle_pedido" />
+    </AssociationSet>
+    <AssociationSet Name="detalle_ventaproducto_producto_FK" Association="Self.detalle_ventaproducto_producto_FK">
+      <End Role="producto" EntitySet="producto" />
+      <End Role="detalle_ventaproducto" EntitySet="detalle_ventaproducto" />
+    </AssociationSet>
+    <AssociationSet Name="detalle_ventaservicio_ejecucion_servicio_FK" Association="Self.detalle_ventaservicio_ejecucion_servicio_FK">
+      <End Role="ejecucion_servicio" EntitySet="ejecucion_servicio" />
+      <End Role="detalle_ventaservicio" EntitySet="detalle_ventaservicio" />
+    </AssociationSet>
+    <AssociationSet Name="ejecucion_servicio_estado_servicio_FK" Association="Self.ejecucion_servicio_estado_servicio_FK">
+      <End Role="estado_servicio" EntitySet="estado_servicio" />
+      <End Role="ejecucion_servicio" EntitySet="ejecucion_servicio" />
+    </AssociationSet>
+    <AssociationSet Name="ejecucion_servicio_operador_FK" Association="Self.ejecucion_servicio_operador_FK">
+      <End Role="operador" EntitySet="operador" />
+      <End Role="ejecucion_servicio" EntitySet="ejecucion_servicio" />
+    </AssociationSet>
+    <AssociationSet Name="ejecucion_servicio_servicio_FK" Association="Self.ejecucion_servicio_servicio_FK">
+      <End Role="servicio" EntitySet="servicio" />
+      <End Role="ejecucion_servicio" EntitySet="ejecucion_servicio" />
+    </AssociationSet>
+    <AssociationSet Name="operador_cargo_FK" Association="Self.operador_cargo_FK">
+      <End Role="cargo" EntitySet="cargo" />
+      <End Role="operador" EntitySet="operador" />
+    </AssociationSet>
+    <AssociationSet Name="operador_persona_FK" Association="Self.operador_persona_FK">
+      <End Role="persona" EntitySet="persona" />
+      <End Role="operador" EntitySet="operador" />
+    </AssociationSet>
+    <AssociationSet Name="pedido_proveedor_FK" Association="Self.pedido_proveedor_FK">
+      <End Role="proveedor" EntitySet="proveedor" />
+      <End Role="pedido" EntitySet="pedido" />
+    </AssociationSet>
+    <AssociationSet Name="producto_marca_FK" Association="Self.producto_marca_FK">
+      <End Role="marca" EntitySet="marca" />
+      <End Role="producto" EntitySet="producto" />
+    </AssociationSet>
+    <AssociationSet Name="producto_proveedor_producto_FK" Association="Self.producto_proveedor_producto_FK">
+      <End Role="producto" EntitySet="producto" />
+      <End Role="producto_proveedor" EntitySet="producto_proveedor" />
+    </AssociationSet>
+    <AssociationSet Name="producto_proveedor_proveedor_FK" Association="Self.producto_proveedor_proveedor_FK">
+      <End Role="proveedor" EntitySet="proveedor" />
+      <End Role="producto_proveedor" EntitySet="producto_proveedor" />
+    </AssociationSet>
+    <AssociationSet Name="producto_tipo_producto_FK" Association="Self.producto_tipo_producto_FK">
+      <End Role="tipo_producto" EntitySet="tipo_producto" />
+      <End Role="producto" EntitySet="producto" />
+    </AssociationSet>
+    <AssociationSet Name="usuario_persona_FK" Association="Self.usuario_persona_FK">
+      <End Role="persona" EntitySet="persona" />
+      <End Role="usuario" EntitySet="usuario" />
+    </AssociationSet>
+    <AssociationSet Name="usuario_tipo_usuario_FK" Association="Self.usuario_tipo_usuario_FK">
+      <End Role="tipo_usuario" EntitySet="tipo_usuario" />
+      <End Role="usuario" EntitySet="usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
